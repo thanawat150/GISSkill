@@ -1,0 +1,117 @@
+{
+  "job_id": "bang-kachao-example",
+  "source_file": "บางกระเจ้า.png",
+  "source_sha256": "405655047758abba29bf2172bf7779a92f32a34e1704aaaf7bd83d080a4c7813",
+  "source_dimensions_pixels": {
+    "width": 1448,
+    "height": 2048
+  },
+  "source_scale": "1:50000",
+  "source_crs": {
+    "name": "WGS 84 / UTM zone 47N",
+    "epsg": 32647
+  },
+  "target_kml_crs": "EPSG:4326",
+  "map_frame_pixels": {
+    "left": 103,
+    "top": 276,
+    "right": 1344,
+    "bottom": 1516
+  },
+  "coordinate_observations": {
+    "x": [
+      {
+        "pixel": 417.5,
+        "easting": 667500.0,
+        "edge": "top",
+        "confidence": "high"
+      },
+      {
+        "pixel": 848.5,
+        "easting": 670000.0,
+        "edge": "top",
+        "confidence": "high"
+      },
+      {
+        "pixel": 1279.5,
+        "easting": 672500.0,
+        "edge": "top",
+        "confidence": "high"
+      }
+    ],
+    "y": [
+      {
+        "pixel": 533.5,
+        "northing": 1515000.0,
+        "edge": "left/right",
+        "confidence": "high"
+      },
+      {
+        "pixel": 964.0,
+        "northing": 1512500.0,
+        "edge": "left/right",
+        "confidence": "high"
+      },
+      {
+        "pixel": 1395.0,
+        "northing": 1510000.0,
+        "edge": "left/right",
+        "confidence": "high"
+      }
+    ]
+  },
+  "transform": {
+    "model": "separable affine",
+    "easting": "5.80046404 * pixel_x + 665078.306",
+    "northing": "-5.80382988 * pixel_y + 1518095.86",
+    "map_frame_extent_utm_m": {
+      "left_easting": 665675.754,
+      "right_easting": 672874.13,
+      "top_northing": 1516494.002,
+      "bottom_northing": 1509297.253
+    }
+  },
+  "rmse": {
+    "x_map_units_m": 0.0,
+    "y_map_units_m": 0.683988,
+    "x_pixels": 0.0,
+    "y_pixels": 0.117851
+  },
+  "ground_pixel_size_m": {
+    "x": 5.800464,
+    "y": 5.80383,
+    "anisotropy_percent": 0.05801
+  },
+  "feature_detection": {
+    "target": "red boundary outline",
+    "dominant_connected_components": 1,
+    "red_mask_pixels": 11391,
+    "skeleton_pixels": 2596,
+    "estimated_line_width_pixels": 4.388,
+    "trace": "skeleton centerline",
+    "simplification_tolerance_pixels": 8,
+    "final_vertices_excluding_closure": 16
+  },
+  "geometry": {
+    "type": "Polygon",
+    "valid": true,
+    "area_square_m": 15184539.234,
+    "area_square_km": 15.184539,
+    "perimeter_m": 16645.698,
+    "bbox_wgs84": {
+      "min_lon": 100.53960115,
+      "min_lat": 13.65788007,
+      "max_lon": 100.58751282,
+      "max_lat": 13.70480599
+    }
+  },
+  "warnings": [
+    "The source is a rendered map image with no embedded georeferencing metadata.",
+    "The transform is derived from printed edge ticks, not independent surveyed ground control.",
+    "The 1:50,000 source scale and approximately 4.4-pixel boundary line width limit positional accuracy.",
+    "Estimated positional uncertainty is approximately 30 metres; this is not a cadastral or legal boundary.",
+    "The georeferenced GeoTIFF and overlay preview were not committed because the source image itself was not added to the public repository."
+  ],
+  "human_review_required": true,
+  "status": "WARNING"
+}
