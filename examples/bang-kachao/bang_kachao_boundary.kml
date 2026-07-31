@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>ขอบเขตบางกระเจ้า</name>
+    <Style id="boundaryStyle">
+      <LineStyle>
+        <color>ff0000ff</color>
+        <width>3</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>00000000</color>
+        <fill>0</fill>
+        <outline>1</outline>
+      </PolyStyle>
+    </Style>
+    <Placemark>
+      <name>ขอบเขตบางกระเจ้า</name>
+      <description><![CDATA[
+        ขอบเขตสกัดจากเส้นสีแดงบนแผนที่ภาพที่ไม่มีพิกัดฝังอยู่ โดยตรึงภาพจากค่าระวาง UTM ที่พิมพ์รอบกรอบแผนที่
+        ระบบพิกัดต้นทาง: WGS 84 / UTM zone 47N (EPSG:32647)
+        พื้นที่ประมาณ: 15.185 ตารางกิโลเมตร
+        เส้นรอบรูปประมาณ: 16.646 กิโลเมตร
+        ควรใช้เป็นขอบเขตที่ตีความจากแผนที่มาตราส่วน 1:50,000 ไม่ใช่ขอบเขตรังวัดหรือขอบเขตกฎหมาย
+      ]]></description>
+      <styleUrl>#boundaryStyle</styleUrl>
+      <ExtendedData>
+        <Data name="source_file"><value>บางกระเจ้า.png</value></Data>
+        <Data name="source_sha256"><value>405655047758abba29bf2172bf7779a92f32a34e1704aaaf7bd83d080a4c7813</value></Data>
+        <Data name="source_crs"><value>WGS 84 / UTM zone 47N</value></Data>
+        <Data name="source_epsg"><value>32647</value></Data>
+        <Data name="kml_crs"><value>EPSG:4326</value></Data>
+        <Data name="georeference_method"><value>Separable affine fit from printed UTM edge ticks</value></Data>
+        <Data name="trace_method"><value>Red-outline mask, connected component, skeleton centerline, topology-preserving simplification</value></Data>
+        <Data name="ground_pixel_size_x_m"><value>5.8005</value></Data>
+        <Data name="ground_pixel_size_y_m"><value>5.8038</value></Data>
+        <Data name="estimated_positional_uncertainty_m"><value>approximately 30 m; map-derived</value></Data>
+        <Data name="qc_status"><value>WARNING</value></Data>
+      </ExtendedData>
+      <Polygon>
+        <tessellate>1</tessellate>
+        <altitudeMode>clampToGround</altitudeMode>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>
+              100.55930967,13.70480599,0
+              100.55404477,13.70337019,0
+              100.55348405,13.69964889,0
+              100.55476189,13.69009274,0
+              100.55280359,13.67767146,0
+              100.54658708,13.66999835,0
+              100.53960115,13.66762856,0
+              100.54015788,13.66253622,0
+              100.54579163,13.66313072,0
+              100.55230458,13.65878812,0
+              100.56323640,13.65788007,0
+              100.57660590,13.66881246,0
+              100.58613048,13.68191956,0
+              100.58751282,13.68815363,0
+              100.58529345,13.69304678,0
+              100.58172009,13.69595503,0
+              100.55930967,13.70480599,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+  </Document>
+</kml>
