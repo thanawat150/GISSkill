@@ -1,0 +1,66 @@
+name: Sentinel 2022 Probe
+
+on:
+  push:
+    branches:
+      - sentinel-2022-worker-20260901
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  STAC_URL: https://earth-search.aws.element84.com/v1/search
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Probe Earth Search STAC for 13-STC
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p out
+          cat > out/query.json <<'JSON'
+          {
+            "collections": ["sentinel-2-l2a"],
+            "bbox": [101.6878800925052, 12.70546012035511, 101.6974598979201, 12.71493844822151],
+            "datetime": "2022-01-01T00:00:00Z/2022-08-31T23:59:59Z",
+            "limit": 20,
+            "sortby": [{"field": "properties.datetime", "direction": "asc"}]
+          }
+          JSON
+          curl --fail-with-body --silent --show-error \
+            -H 'Content-Type: application/json' \
+            --data @out/query.json \
+            "$STAC_URL" > out/results.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('out/results.json')
+          data = json.loads(p.read_text(encoding='utf-8'))
+          feats = data.get('features', [])
+          summary = []
+          for f in feats:
+              summary.append({
+                  'id': f.get('id'),
+                  'datetime': f.get('properties', {}).get('datetime'),
+                  'cloud_cover': f.get('properties', {}).get('eo:cloud_cover'),
+                  'mgrs_tile': f.get('properties', {}).get('mgrs:tile'),
+                  'assets': sorted(f.get('assets', {}).keys()),
+              })
+          Path('out/summary.json').write_text(json.dumps(summary, indent=2), encoding='utf-8')
+          print(f'features={len(feats)}')
+          if not feats:
+              raise SystemExit('No Sentinel-2 L2A items returned for 13-STC')
+          for row in summary[:5]:
+              print(row)
+          PY
+      - name: Upload probe artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sentinel-2022-probe
+          path: out/
+          if-no-files-found: error
+          retention-days: 3
